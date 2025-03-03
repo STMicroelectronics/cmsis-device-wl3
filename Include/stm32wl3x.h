@@ -48,17 +48,28 @@
 /**
   * @brief STM32 Family
   */
-#if !defined (STM32WL33)
-#define STM32WL33
+#if !defined (STM32WL3)
+#define STM32WL3
 #endif /* STM32WL3 */
 
-/* Uncomment the line below according to the target STM32WL3 device used in your
-   application
+/** Uncomment the line below according to the target STM32WL3 device used in your application.
+  * stm32wl3xx.h file contains:
+  * - All the peripheral register's definitions, bits definitions and memory mapping for STM32WL3xx devices
+  * - IRQ channel definition
+  * - Peripheral memory mapping and physical registers address definition
+  * - Peripheral pointer declaration and driver header file inclusion
+  * - Product miscellaneous configuration: assert macros, …
+  * Note: These CMSIS drivers (stm32wl3xx.h) are always supporting features of the sub-family's superset.
   */
+#if !defined (STM32WL3XX)
+  /* #define STM32WL3XX */   /*!< STM32WL30x, STM32WL31x and STM32WL33x Devices */
+#endif /* STM32WL3XX */
 
-#if !defined (STM32WL3x)
-  /* #define STM32WL3 */   /*!< STM32WL3xx Devices */
-#endif
+/* Legacy aliases */
+#if defined (STM32WL33)
+ #define STM32WL3XX
+#endif /* STM32WL33 */
+
 
 /*  Tip: To avoid modifying this file each time you need to switch between these
         devices, you can define the device in your toolchain compiler preprocessor.
@@ -76,7 +87,7 @@
   * @brief CMSIS Device version number
   */
 #define __STM32WL3x_CMSIS_VERSION_MAIN   (0x01U) /*!< [31:24] main version */
-#define __STM32WL3x_CMSIS_VERSION_SUB1   (0x00U) /*!< [23:16] sub1 version */
+#define __STM32WL3x_CMSIS_VERSION_SUB1   (0x01U) /*!< [23:16] sub1 version */
 #define __STM32WL3x_CMSIS_VERSION_SUB2   (0x00U) /*!< [15:8]  sub2 version */
 #define __STM32WL3x_CMSIS_VERSION_RC     (0x00U) /*!< [7:0]  release candidate */
 #define __STM32WL3x_CMSIS_VERSION       ((__STM32WL3x_CMSIS_VERSION_MAIN << 24U)\
@@ -92,11 +103,11 @@
   * @{
   */
 
-#if defined(STM32WL33)
-  #include "stm32wl33.h"
+#if defined(STM32WL3XX)
+  #include "stm32wl3xx.h"
 #else
- #error "Please select first the target STM32WL3x device used in your application (in stm32wl3xx.h file)"
-#endif
+ #error "Please select first the target STM32WL3xx device used in your application (in stm32wl3x.h file)"
+#endif /* STM32WL3XX */
 
 /**
   * @}

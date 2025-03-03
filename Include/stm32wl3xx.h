@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    stm32wl33.h
+  * @file    stm32wl3xx.h
   * @author  MCD Application Team
   * @brief   CMSIS Cortex Device Peripheral Access Layer Header File.
   *          This file contains all the peripheral register's definitions, bits
@@ -24,8 +24,8 @@
   ******************************************************************************
   */
 
-#ifndef STM32WL33_H
-#define STM32WL33_H
+#ifndef STM32WL3XX_H
+#define STM32WL3XX_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -12846,4 +12846,4 @@ typedef struct{ /*!< LPAWUR Structure  */
 }
 #endif
 
-#endif /* STM32WL33_H */
+#endif /* STM32WL3XX_H */

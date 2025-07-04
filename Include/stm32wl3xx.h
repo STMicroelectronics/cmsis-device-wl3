@@ -74,17 +74,17 @@ typedef enum {
   TIM2_IRQn                 =  10,              /*!< 10 Timer 2 interrupt                                                      */
   RTC_IRQn                  =  11,              /*!< 11 RTC interrupt                                                          */
   ADC_IRQn                  =  12,              /*!< 12 ADC interrupt                                                          */
-  AES_IRQn                 =  13,              /*!< 13 AES interrupt                                                         */
+  AES_IRQn                  =  13,              /*!< 13 AES interrupt                                                         */
   GPIOA_IRQn                =  15,              /*!< 15 GPIOA interrupt                                                        */
   GPIOB_IRQn                =  16,              /*!< 16 GPIOB interrupt                                                        */
   DMA_IRQn                  =  17,              /*!< 17 DMA interrupt                                                          */
   LPAWUR_IRQn               =  18,              /*!< 18 LPAWUR interrupt                                                       */
   COMP1_IRQn                =  19,              /*!< 19 Comp interrupt through SYSCFGBLE                                       */
-  MR_SUBG_BUSY_IRQn         =  20,              /*!< 20 MR_SUBG Busy interrupt                                                 */
-  MR_SUBG_IRQn              =  21,              /*!< 21 MR_SUBG interrupt                                                      */
-  TX_RX_SEQUENCE_IRQn       =  22,              /*!< 22 MR_SUBG TX/RX Sequence interrupt                                       */
-  CPU_WKUP_IRQn             =  23,              /*!< 23 CPU Wakeup interrupt                                                   */
-  SUBG_WKUP_IRQn            =  24,              /*!< 24 SUBG Wakeup interrupt                                                  */
+  MRSUBG_BUSY_IRQn          =  20,              /*!< 20 MR_SUBG Busy interrupt                                                 */
+  MRSUBG_IRQn               =  21,              /*!< 21 MR_SUBG interrupt                                                      */
+  MRSUBG_TX_RX_SEQUENCE_IRQn = 22,              /*!< 22 MR_SUBG TX/RX Sequence interrupt                                       */
+  MRSUBG_TIMER_CPU_WKUP_IRQn = 23,              /*!< 23 CPU Wakeup interrupt                                                   */
+  MRSUBG_WKUP_IRQn          =  24,              /*!< 24 SUBG Wakeup interrupt                                                  */
   DAC_IRQn                  =  25,              /*!< 25 DAC interrupt                                                          */
   TIM16_IRQn                =  26,              /*!< 26 TIM16 interrupt                                                        */
   LCD_IRQn                  =  27,              /*!< 27 LCD interrupt                                                          */
@@ -4281,15 +4281,22 @@ typedef struct{ /*!< LPAWUR Structure  */
 #define LCSC_CR2_TAMP_PSC_7                                                (0x80U << LCSC_CR2_TAMP_PSC_Pos)
 
 /* =====================================================    PULSE_CR    =====================================================*/ 
-#define LCSC_PULSE_CR_LCT_PULSE_WIDTH_Pos                                  (8UL)		/*!<LCSC PULSE_CR: LCT_PULSE_WIDTH (Bit 8) */
-#define LCSC_PULSE_CR_LCT_PULSE_WIDTH_Msk                                  (0xf00UL)		/*!< LCSC PULSE_CR: LCT_PULSE_WIDTH (Bitfield-Mask: 0x0f) */
+#define LCSC_PULSE_CR_LCT_PULSE_WIDTH_Pos                                  (8UL)/*!<LCSC PULSE_CR: LCT_PULSE_WIDTH (Bit 8) */
+#define LCSC_PULSE_CR_LCT_PULSE_WIDTH_Msk                                  (0xf00UL)/*!< LCSC PULSE_CR: LCT_PULSE_WIDTH (Bitfield-Mask: 0x0f) */
 #define LCSC_PULSE_CR_LCT_PULSE_WIDTH                                      LCSC_PULSE_CR_LCT_PULSE_WIDTH_Msk
 #define LCSC_PULSE_CR_LCT_PULSE_WIDTH_0                                    (0x1U << LCSC_PULSE_CR_LCT_PULSE_WIDTH_Pos)
 #define LCSC_PULSE_CR_LCT_PULSE_WIDTH_1                                    (0x2U << LCSC_PULSE_CR_LCT_PULSE_WIDTH_Pos)
 #define LCSC_PULSE_CR_LCT_PULSE_WIDTH_2                                    (0x4U << LCSC_PULSE_CR_LCT_PULSE_WIDTH_Pos)
 #define LCSC_PULSE_CR_LCT_PULSE_WIDTH_3                                    (0x8U << LCSC_PULSE_CR_LCT_PULSE_WIDTH_Pos)
-#define LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Pos                                 (0UL)		/*!<LCSC PULSE_CR: LCAB_PULSE_WIDTH (Bit 0) */
-#define LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Msk                                 (0xfUL)		/*!< LCSC PULSE_CR: LCAB_PULSE_WIDTH (Bitfield-Mask: 0x0f) */
+#define LCSC_PULSE_CR_PULSETRIM_Pos                                        (4UL)/*!<LCSC PULSE_CR: PULSETRIM (Bit 4) */
+#define LCSC_PULSE_CR_PULSETRIM_Msk                                        (0xf0UL)/*!< LCSC PULSE_CR: PULSETRIM (Bitfield-Mask: 0xf0) */
+#define LCSC_PULSE_CR_PULSETRIM                                            LCSC_PULSE_CR_PULSETRIM_Msk
+#define LCSC_PULSE_CR_PULSETRIM_0                                          (0x1U << LCSC_PULSE_CR_PULSETRIM_Pos)
+#define LCSC_PULSE_CR_PULSETRIM_1                                          (0x2U << LCSC_PULSE_CR_PULSETRIM_Pos)
+#define LCSC_PULSE_CR_PULSETRIM_2                                          (0x4U << LCSC_PULSE_CR_PULSETRIM_Pos)
+#define LCSC_PULSE_CR_PULSETRIM_3                                          (0x8U << LCSC_PULSE_CR_PULSETRIM_Pos)
+#define LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Pos                                 (0UL)/*!<LCSC PULSE_CR: LCAB_PULSE_WIDTH (Bit 0) */
+#define LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Msk                                 (0xfUL)/*!< LCSC PULSE_CR: LCAB_PULSE_WIDTH (Bitfield-Mask: 0xf) */
 #define LCSC_PULSE_CR_LCAB_PULSE_WIDTH                                     LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Msk
 #define LCSC_PULSE_CR_LCAB_PULSE_WIDTH_0                                   (0x1U << LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Pos)
 #define LCSC_PULSE_CR_LCAB_PULSE_WIDTH_1                                   (0x2U << LCSC_PULSE_CR_LCAB_PULSE_WIDTH_Pos)
@@ -12557,6 +12564,13 @@ typedef struct{ /*!< LPAWUR Structure  */
 #define MR_SUBG_RADIO_RF_INFO_OUT_RFSUBG_ID_1                             (0x2U << MR_SUBG_RADIO_RF_INFO_OUT_RFSUBG_ID_Pos)
 #define MR_SUBG_RADIO_RF_INFO_OUT_RFSUBG_ID_2                             (0x4U << MR_SUBG_RADIO_RF_INFO_OUT_RFSUBG_ID_Pos)
 #define MR_SUBG_RADIO_RF_INFO_OUT_RFSUBG_ID_3                             (0x8U << MR_SUBG_RADIO_RF_INFO_OUT_RFSUBG_ID_Pos)
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Pos                       (0UL)         /*!<MR_SUBG_RADIO RF_INFO_OUT:  FQCY_BAND_ID (Bit 0) */
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Msk                       (0xfUL)      /*!< MR_SUBG_RADIO RF_INFO_OUT:  FQCY_BAND_ID (Bitfield-Mask: 0xf) */
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID                            MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Msk
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_0                         (0x1U << MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Pos)
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_1                         (0x2U << MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Pos)
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_2                         (0x4U << MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Pos)
+#define MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_3                         (0x8U << MR_SUBG_RADIO_RF_INFO_OUT_FQCY_BAND_ID_Pos)
 
 /* =====================================================    RF_FSM8_TIMEOUT    =====================================================*/ 
 #define MR_SUBG_RADIO_RF_FSM8_TIMEOUT_SYNTH_PDWN_TIMER_Pos                 (0UL)		/*!<MR_SUBG_RADIO RF_FSM8_TIMEOUT: SYNTH_PDWN_TIMER (Bit 0) */

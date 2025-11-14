@@ -1,5 +1,5 @@
 ;********************************************************************************
-;* File Name          : startup_stm32wl3x.s
+;* File Name          : startup_stm32wl3rx.s
 ;* Author             : GPM WBL Application Team
 ;* Description        : STM32WL3x Ultra Low Power Devices vector
 ;*                      This module performs:
@@ -78,8 +78,8 @@ __vector_table
         DCD RCC_IRQHandler                       ; IRQ1:  RCC interrupt
         DCD PVD_IRQHandler                       ; IRQ2:  PVD interrupt
         DCD I2C1_IRQHandler                      ; IRQ3:  I2C1 interrupt
-        DCD I2C2_IRQHandler                      ; IRQ4:  I2C2 interrupt
-        DCD SPI1_IRQHandler                      ; IRQ5:  SPI1 interrupt
+        DCD 0x00000000                           ; IRQ4:  Reserved
+        DCD 0x00000000                           ; IRQ5:  Reserved
         DCD 0x00000000                           ; IRQ6:  Reserved
         DCD SPI3_IRQHandler                      ; IRQ7:  SPI3 interrupt
         DCD USART1_IRQHandler                    ; IRQ8:  USART1 interrupt
@@ -92,18 +92,18 @@ __vector_table
         DCD GPIOA_IRQHandler                     ; IRQ15: GPIOA interrupt
         DCD GPIOB_IRQHandler                     ; IRQ16: GPIOB interrupt
         DCD DMA_IRQHandler                       ; IRQ17: DMA interrupt
-        DCD LPAWUR_IRQHandler                    ; IRQ18: LPAWUR interrupt
-        DCD COMP1_IRQHandler                     ; IRQ19: COMP1 interrupt
+        DCD 0x00000000                           ; IRQ18: Reserved
+        DCD 0x00000000                           ; IRQ19: Reserved
         DCD MRSUBG_BUSY_IRQHandler               ; IRQ20: MR SUBG BUSY interrupt
         DCD MRSUBG_IRQHandler                    ; IRQ21: MR SUBG interrupt
-        DCD MRSUBG_TX_RX_SEQUENCE_IRQHandler     ; IRQ22:MR SUBG TX RX Sequence interrupt
+        DCD MRSUBG_TX_RX_SEQUENCE_IRQHandler     ; IRQ22: MR SUBG TX RX Sequence interrupt
         DCD MRSUBG_TIMER_CPU_WKUP_IRQHandler     ; IRQ23: MR SUBG TIMER CPU Wakeup interrupt
-        DCD MRSUBG_WKUP_IRQHandler               ; IRQ24:MR SUBG Wakeup interrupt
-        DCD DAC_IRQHandler                       ; IRQ25: DAC interrupt
+        DCD MRSUBG_WKUP_IRQHandler               ; IRQ24: MR SUBG Wakeup interrupt
+        DCD 0x00000000                           ; IRQ25: Reserved
         DCD TIM16_IRQHandler                     ; IRQ26: TIM16 interrupt
-        DCD LCD_IRQHandler                       ; IRQ27: LCD interrupt
-        DCD LCSC_IRQHandler                      ; IRQ28: LCSC interrupt
-        DCD LCSC_LC_ACTIVITY_IRQHandler          ; IRQ29: LCSC LC ACTIVITY interrupt
+        DCD 0x00000000                           ; IRQ27: Reserved
+        DCD 0x00000000                           ; IRQ28: Reserved
+        DCD 0x00000000                           ; IRQ29: Reserved
         DCD 0x00000000                           ; IRQ30: Reserved
         DCD 0x00000000                           ; IRQ31: Reserved
 
@@ -170,16 +170,6 @@ PVD_IRQHandler
 I2C1_IRQHandler
         B I2C1_IRQHandler
 
-        PUBWEAK I2C2_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-I2C2_IRQHandler
-        B I2C2_IRQHandler
-
-        PUBWEAK SPI1_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-SPI1_IRQHandler
-        B SPI1_IRQHandler
-
         PUBWEAK SPI3_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 SPI3_IRQHandler
@@ -190,104 +180,74 @@ SPI3_IRQHandler
 USART1_IRQHandler
         B USART1_IRQHandler
 
-        PUBWEAK LPUART1_IRQHandler
+    PUBWEAK LPUART1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 LPUART1_IRQHandler
         B LPUART1_IRQHandler
 
-        PUBWEAK TIM2_IRQHandler
+    PUBWEAK TIM2_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 TIM2_IRQHandler
         B TIM2_IRQHandler
 
-        PUBWEAK RTC_IRQHandler
+    PUBWEAK RTC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 RTC_IRQHandler
         B RTC_IRQHandler
 
-        PUBWEAK ADC_IRQHandler
+    PUBWEAK ADC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 ADC_IRQHandler
         B ADC_IRQHandler
 
-        PUBWEAK AES_IRQHandler
+    PUBWEAK AES_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 AES_IRQHandler
         B AES_IRQHandler
 
-        PUBWEAK GPIOA_IRQHandler
+    PUBWEAK GPIOA_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 GPIOA_IRQHandler
         B GPIOA_IRQHandler
 
-        PUBWEAK GPIOB_IRQHandler
+    PUBWEAK GPIOB_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 GPIOB_IRQHandler
         B GPIOB_IRQHandler
 
-        PUBWEAK DMA_IRQHandler
+    PUBWEAK DMA_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 DMA_IRQHandler
         B DMA_IRQHandler
 
-        PUBWEAK LPAWUR_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-LPAWUR_IRQHandler
-        B LPAWUR_IRQHandler
-
-        PUBWEAK COMP1_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-COMP1_IRQHandler
-        B COMP1_IRQHandler
-
-        PUBWEAK MRSUBG_BUSY_IRQHandler
+    PUBWEAK MRSUBG_BUSY_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 MRSUBG_BUSY_IRQHandler
         B MRSUBG_BUSY_IRQHandler
 
-        PUBWEAK MRSUBG_IRQHandler
+    PUBWEAK MRSUBG_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 MRSUBG_IRQHandler
         B MRSUBG_IRQHandler
 
-        PUBWEAK MRSUBG_TX_RX_SEQUENCE_IRQHandler
+    PUBWEAK MRSUBG_TX_RX_SEQUENCE_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 MRSUBG_TX_RX_SEQUENCE_IRQHandler
         B MRSUBG_TX_RX_SEQUENCE_IRQHandler
 
-        PUBWEAK MRSUBG_TIMER_CPU_WKUP_IRQHandler
+    PUBWEAK MRSUBG_TIMER_CPU_WKUP_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 MRSUBG_TIMER_CPU_WKUP_IRQHandler
         B MRSUBG_TIMER_CPU_WKUP_IRQHandler
 
-        PUBWEAK MRSUBG_WKUP_IRQHandler
+    PUBWEAK MRSUBG_WKUP_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 MRSUBG_WKUP_IRQHandler
         B MRSUBG_WKUP_IRQHandler
 
-        PUBWEAK DAC_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DAC_IRQHandler
-        B DAC_IRQHandler
-
-        PUBWEAK TIM16_IRQHandler
+    PUBWEAK TIM16_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 TIM16_IRQHandler
         B TIM16_IRQHandler
-
-        PUBWEAK LCD_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-LCD_IRQHandler
-        B LCD_IRQHandler
-
-        PUBWEAK LCSC_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-LCSC_IRQHandler
-        B LCSC_IRQHandler
-
-        PUBWEAK LCSC_LC_ACTIVITY_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-LCSC_LC_ACTIVITY_IRQHandler
-        B LCSC_LC_ACTIVITY_IRQHandler
 
         END

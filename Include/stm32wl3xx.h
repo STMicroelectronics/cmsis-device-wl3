@@ -1031,9 +1031,9 @@ typedef struct{ /*!< LPAWUR Structure  */
 
 /*!< Peripheral memory map */
 #define APB0PERIPH_BASE        PERIPH_BASE
-#define APB1PERIPH_BASE       (PERIPH_BASE + 0x01000000LU)
-#define AHBPERIPH_BASE        (PERIPH_BASE + 0x08000000LU)
-#define APB2PERIPH_BASE       (PERIPH_BASE + 0x09000000LU)
+#define APB1PERIPH_BASE       (PERIPH_BASE + 0x01000000UL)
+#define AHBPERIPH_BASE        (PERIPH_BASE + 0x08000000UL)
+#define APB2PERIPH_BASE       (PERIPH_BASE + 0x09000000UL)
 
 
 /*!< APB0 peripherals */

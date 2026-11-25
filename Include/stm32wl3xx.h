@@ -1101,7 +1101,15 @@ typedef struct{ /*!< LPAWUR Structure  */
 
 /** @} */ /* End of group Device_Peripheral_peripheralAddr */
 
+/** @addtogroup Hardware_Constant_Definition
+  * @{
+  */
+#define LSI_STARTUP_TIME                16000U /*!< LSI Maximum startup time in us : 4 cycles @ 250 Hz = 16 ms */
 
+/**
+  * @}
+  */
+  
 /* =========================================================================================================================== */
 /* ================                                  Peripheral declaration                                   ================ */
 /* =========================================================================================================================== */

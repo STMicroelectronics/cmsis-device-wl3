@@ -24,6 +24,23 @@ Various template files are provided to easily build an application. They can be 
 
 # Update history
 
+<label for="collapse-section9" aria-hidden="true"> __V1.6.0 / 28-October-2026__ </label>
+<div>
+
+## Main Changes
+- Fix the LCSC_TypeDef reserved field size from RESERVED[6] to RESERVED[7] to restore the correct LCSC_ISR offset.
+- Add LSI_STARTUP_TIME hardware constant define.
+
+## Known Limitations
+- None
+
+## Development Toolchains and Compilers
+- IAR Embedded Workbench for ARM (EWARM) toolchain V9.30.1 
+
+## Supported Devices and boards
+- STM32WL3xx devices
+</div>
+
 <label for="collapse-section8" aria-hidden="true"> __V1.5.0 / 05-June-2026__ </label>
 <div>
 
